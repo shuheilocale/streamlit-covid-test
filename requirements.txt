@@ -2,4 +2,3 @@ plotly
 pandas
 geopandas
 numpy
-dash==1.18.1
