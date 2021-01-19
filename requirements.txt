@@ -2,3 +2,5 @@ plotly
 pandas
 geopandas
 numpy
+xlrd
+openpyxl
