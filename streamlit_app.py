@@ -71,7 +71,7 @@ def main():
                     img = Image.open(upload_file)
 
                     logger.info('ocr begin')
-                    results = reader.readtext(img)
+                    results = reader.readtext(np.asarray(img))
                     logger.info('ocr end')
 
                     for result in results:
