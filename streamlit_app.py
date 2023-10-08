@@ -85,8 +85,11 @@ def main():
     for i in range(12):
         col1, col2 = st.columns([1, 2])
         with col1:
-
-            number = st.number_input(f'モンスター{i+1}', value=0, key=f'monster_{i+1}')
+            if f'monster_{i+1}' in st.session_state:
+                val = st.session_state.get(f'monster_{i+1}')
+            else:
+                val = 0
+            number = st.number_input(f'モンスター{i+1}', min_value=0, value=val, key=f'monster_{i+1}')
             monster_nos.append(number)
         with col2:
             try:
