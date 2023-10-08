@@ -24,9 +24,11 @@ def extract_numbers(text):
     return matches
 
 
-#reader = easyocr.Reader(['ja','en'],gpu = False)
+reader = easyocr.Reader(['ja','en'],gpu = False)
 df = pd.read_csv('monster_list.csv')
 monster_factory = MonsterFactory(df)
+
+print('global')
 
 def main():
 
