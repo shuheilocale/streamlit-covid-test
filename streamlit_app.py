@@ -35,7 +35,7 @@ def main(reader):
 
     uploaded_files = st.file_uploader('スクショアップロード', accept_multiple_files=True, type=['jpg','jpeg','png'])
 
-    if st.button('判定'):
+    if st.button('OCR'):
         if uploaded_files is not None:
             monster_nos = []
 
