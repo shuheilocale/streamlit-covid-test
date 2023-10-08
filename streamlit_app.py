@@ -26,10 +26,6 @@ def extract_numbers(text):
 
 def main(reader):
 
-    # 外部で保持する値
-    if st.button('ほげ'):
-        st.session_state['monster_1'] = 122
-
 
     st.title('宝の地図大量発生判定')
     st.write('出現モンスターの図鑑No.を入力してください。')
