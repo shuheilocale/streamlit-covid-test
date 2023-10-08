@@ -1,6 +1,2 @@
-plotly
-pandas
-geopandas
-numpy
-xlrd
-openpyxl
+paddleocr>=2.0.1
+paddlepaddle==2.2.1 -i https://mirror.baidu.com/pypi/simple
