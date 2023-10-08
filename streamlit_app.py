@@ -65,12 +65,10 @@ def main():
                 monster_nos = []
 
                 for upload_file in uploaded_files:
-                    st.code(upload_file)
                     logger.info(upload_file)
-                    st.code(type(upload_file))
                     img = Image.open(upload_file)
 
-                    w = 300
+                    w = 500
                     h = img.height * w // img.width
                     img_resize = img.resize((w, h))
 
