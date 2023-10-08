@@ -41,6 +41,7 @@ def main():
             monster_nos = []
 
             for upload_file in uploaded_files:
+                pass
 
                 #img = Image.open(upload_file)
                 #st.image(img, caption='Uploaded Image.', use_column_width=True)
