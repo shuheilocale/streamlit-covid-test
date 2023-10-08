@@ -42,8 +42,8 @@ def main():
 
             for upload_file in uploaded_files:
 
-                img = Image.open(upload_file)
-                st.image(img, caption='Uploaded Image.', use_column_width=True)
+                #img = Image.open(upload_file)
+                #st.image(img, caption='Uploaded Image.', use_column_width=True)
                 #results = reader.readtext(img)
 
                 #for result in results:
