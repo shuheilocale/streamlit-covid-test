@@ -89,7 +89,7 @@ def main():
                 val = st.session_state.get(f'monster_{i+1}')
             else:
                 val = 0
-            number = st.number_input(f'モンスター{i+1}', min_value=0, value=val, key=f'monster_{i+1}')
+            number = st.number_input(f'モンスター{i+1}', min_value=0, value=val)
             monster_nos.append(number)
         with col2:
             try:
