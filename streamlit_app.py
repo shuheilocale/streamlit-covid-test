@@ -71,15 +71,14 @@ def main():
                     results = reader.readtext(img)
                     logger.info('ocr end')
 
-                    #for result in results:
-                    #    monster_nos += extract_numbers(result[1])
+                    for result in results:
+                        monster_nos += extract_numbers(result[1])
 
 
-                #monster_nos = list(set(monster_nos))[:12]
+                monster_nos = list(set(monster_nos))[:12]
 
-                #for i, monster_no in enumerate(monster_nos):
-                #    st.session_state[f'monster_{i+1}'] = monster_no
-                st.session_state[f'monster_1'] = 100
+                for i, monster_no in enumerate(monster_nos):
+                    st.session_state[f'monster_{i+1}'] = monster_no
 
 
     monster_nos = []
