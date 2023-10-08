@@ -66,7 +66,7 @@ def main():
                 for upload_file in uploaded_files:
                     st.code(upload_file)
                     logger.info(upload_file)
-                    img = Image.open(upload_file.name)
+                    img = Image.open(upload_file.getvalue())
 
                     logger.info('ocr begin')
                     results = reader.readtext(img)
