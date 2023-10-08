@@ -35,22 +35,25 @@ def main(reader):
 
     uploaded_files = st.file_uploader('スクショアップロード', accept_multiple_files=True, type=['jpg','jpeg','png'])
 
-    if uploaded_files is not None:
-        monster_nos = []
+    if st.button('判定'):
+        if uploaded_files is not None:
+            monster_nos = []
 
-        for upload_file in uploaded_files:
+            for upload_file in uploaded_files:
 
-            pil = Image.open(upload_file)
-            results = reader.readtext(pil)
+                pil = Image.open(upload_file)
+                st.image(pil, caption='Uploaded Image.', use_column_width=True)
+                #results = reader.readtext(pil)
 
-            for result in results:
-                monster_nos += extract_numbers(result[1])
+                #for result in results:
+                #    monster_nos += extract_numbers(result[1])
 
 
-        monster_nos = list(set(monster_nos))[:12]
+            #monster_nos = list(set(monster_nos))[:12]
 
-        for i, monster_no in enumerate(monster_nos):
-            st.session_state[f'monster_{i+1}'] = monster_no
+            #for i, monster_no in enumerate(monster_nos):
+            #    st.session_state[f'monster_{i+1}'] = monster_no
+            st.session_state[f'monster_1'] = 100
 
 
     monster_nos = []
