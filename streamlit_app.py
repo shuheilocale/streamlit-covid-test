@@ -2,6 +2,7 @@ import os
 import re
 
 
+import numpy as np
 from PIL import Image
 import easyocr
 import pandas as pd
@@ -66,7 +67,8 @@ def main():
                 for upload_file in uploaded_files:
                     st.code(upload_file)
                     logger.info(upload_file)
-                    img = Image.open(upload_file.getvalue())
+                    st.code(type(upload_file))
+                    img = Image.open(upload_file)
 
                     logger.info('ocr begin')
                     results = reader.readtext(img)
