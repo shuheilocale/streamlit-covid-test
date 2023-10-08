@@ -24,14 +24,15 @@ def extract_numbers(text):
     return matches
 
 
-def main(reader):
+reader = easyocr.Reader(['ja','en'],gpu = False)
+df = pd.read_csv('monster_list.csv')
+monster_factory = MonsterFactory(df)
 
+def main():
 
     st.title('宝の地図大量発生判定')
     st.write('出現モンスターの図鑑No.を入力してください。')
 
-    df = pd.read_csv('monster_list.csv')
-    monster_factory = MonsterFactory(df)
 
     uploaded_files = st.file_uploader('スクショアップロード', accept_multiple_files=True, type=['jpg','jpeg','png'])
 
@@ -101,6 +102,4 @@ def main(reader):
 
 
 if __name__ == '__main__':
-
-    reader = easyocr.Reader(['ja','en'],gpu = False)
-    main(reader)
+    main()
