@@ -34,7 +34,7 @@ def main():
     st.write('出現モンスターの図鑑No.を入力してください。')
 
 
-    uploaded_files = st.file_uploader('スクショアップロード', type=['jpg','jpeg','png'])
+    uploaded_files = st.file_uploader('スクショアップロード', accept_multiple_files=False, type=['jpg','jpeg','png'])
 
     if st.button('OCR'):
         if uploaded_files is not None:
