@@ -42,9 +42,9 @@ def main():
 
             for upload_file in uploaded_files:
 
-                pil = Image.open(upload_file)
-                st.image(pil, caption='Uploaded Image.', use_column_width=True)
-                #results = reader.readtext(pil)
+                img = Image.open(upload_file)
+                st.image(img, caption='Uploaded Image.', use_column_width=True)
+                #results = reader.readtext(img)
 
                 #for result in results:
                 #    monster_nos += extract_numbers(result[1])
