@@ -1,8 +1,9 @@
 import os
+import re
 
 import streamlit as st
-
-
+from PIL import Image
+import easyocr
 import pandas as pd
 
 from monster import MonsterFactory, EncountMonsters
@@ -17,8 +18,18 @@ def judge(monster_nos, monster_factory):
         'msg': msg
     }
 
+def extract_numbers(text):
+    pattern = r'N[oO0][,.]?(\d+)'
+    matches = re.findall(pattern, text)
+    return matches
 
-def main():
+
+def main(reader):
+
+    # 外部で保持する値
+    if st.button('ほげ'):
+        st.session_state['monster_1'] = 122
+
 
     st.title('宝の地図大量発生判定')
     st.write('出現モンスターの図鑑No.を入力してください。')
@@ -26,12 +37,32 @@ def main():
     df = pd.read_csv('monster_list.csv')
     monster_factory = MonsterFactory(df)
 
+    uploaded_files = st.file_uploader('スクショアップロード', accept_multiple_files=True, type=['jpg','jpeg','png'])
+
+    if uploaded_files is not None:
+        monster_nos = []
+
+        for upload_file in uploaded_files:
+
+            pil = Image.open(upload_file)
+            results = reader.readtext(pil)
+
+            for result in results:
+                monster_nos += extract_numbers(result[1])
+
+
+        monster_nos = list(set(monster_nos))[:12]
+
+        for i, monster_no in enumerate(monster_nos):
+            st.session_state[f'monster_{i+1}'] = monster_no
+
+
     monster_nos = []
     for i in range(12):
         col1, col2 = st.columns([1, 2])
         with col1:
-            # スタイルを適用してスリムな入力欄を作成
-            number = st.number_input(f'モンスター{i+1}', value=0, key=f'monster_{i}')
+
+            number = st.number_input(f'モンスター{i+1}', value=0, key=f'monster_{i+1}')
             monster_nos.append(number)
         with col2:
             try:
@@ -71,6 +102,6 @@ def main():
 
 
 if __name__ == '__main__':
-    import easyocr
+
     reader = easyocr.Reader(['ja','en'],gpu = False)
-    main()
+    main(reader)
