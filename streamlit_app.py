@@ -1,10 +1,15 @@
 import os
 import re
 
-import streamlit as st
+
 from PIL import Image
 import easyocr
 import pandas as pd
+import streamlit as st
+from streamlit.logger import get_logger
+
+logger = get_logger(__name__)
+
 
 from monster import MonsterFactory, EncountMonsters
 
@@ -25,9 +30,7 @@ def extract_numbers(text):
 
 
 
-
-
-print('global')
+logger.info('global')
 
 def main():
     st.set_page_config(
@@ -56,25 +59,27 @@ def main():
     uploaded_files = st.file_uploader('スクショアップロード', accept_multiple_files=True, type=['jpg','jpeg','png'])
 
     if st.button('OCR'):
-        if uploaded_files is not None:
-            monster_nos = []
+        with st.spinner('処理中...'):
+            if uploaded_files is not None:
+                monster_nos = []
 
-            for upload_file in uploaded_files:
-                pass
+                for upload_file in uploaded_files:
+                    logger.info(upload_file)
+                    img = Image.open(upload_file)
 
-                #img = Image.open(upload_file)
-                #st.image(img, caption='Uploaded Image.', use_column_width=True)
-                #results = reader.readtext(img)
+                    logger.info('ocr begin')
+                    results = reader.readtext(img)
+                    logger.info('ocr end')
 
-                #for result in results:
-                #    monster_nos += extract_numbers(result[1])
+                    #for result in results:
+                    #    monster_nos += extract_numbers(result[1])
 
 
-            #monster_nos = list(set(monster_nos))[:12]
+                #monster_nos = list(set(monster_nos))[:12]
 
-            #for i, monster_no in enumerate(monster_nos):
-            #    st.session_state[f'monster_{i+1}'] = monster_no
-            st.session_state[f'monster_1'] = 100
+                #for i, monster_no in enumerate(monster_nos):
+                #    st.session_state[f'monster_{i+1}'] = monster_no
+                st.session_state[f'monster_1'] = 100
 
 
     monster_nos = []
