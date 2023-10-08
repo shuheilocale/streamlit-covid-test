@@ -78,7 +78,7 @@ def main():
                 monster_nos = list(set(monster_nos))[:12]
 
                 for i, monster_no in enumerate(monster_nos):
-                    st.session_state[f'monster_{i+1}'] = monster_no
+                    st.session_state[f'monster_{i+1}'] = int(monster_no)
 
 
     monster_nos = []
