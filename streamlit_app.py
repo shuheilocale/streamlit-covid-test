@@ -95,6 +95,7 @@ def main():
             else:
                 val = 0
             number = st.number_input(f'モンスター{i+1}', min_value=0, value=val)
+            st.session_state[f'monster_{i+1}'] = val
             monster_nos.append(number)
         with col2:
             try:
@@ -107,6 +108,8 @@ def main():
 
 
     if st.button('判定'):
+
+        monster_nos = [ st.session_state.get(f'monster_{i+1}') for i in range(12)]
 
         try:
             result = judge(monster_nos
