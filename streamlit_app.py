@@ -71,5 +71,6 @@ def main():
 
 
 if __name__ == '__main__':
-
+    from paddleocr import PaddleOCR, draw_ocr
+    ocr = PaddleOCR(use_angle_cls=True, lang='japan')
     main()
