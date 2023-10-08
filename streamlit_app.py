@@ -70,8 +70,12 @@ def main():
                     st.code(type(upload_file))
                     img = Image.open(upload_file)
 
+                    w = 300
+                    h = img.height * w // img.width
+                    img_resize = img.resize((w, h))
+
                     logger.info('ocr begin')
-                    results = reader.readtext(np.array(img))
+                    results = reader.readtext(np.array(img_resize))
                     logger.info('ocr end')
 
                     for result in results:
