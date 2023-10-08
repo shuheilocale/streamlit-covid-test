@@ -64,6 +64,7 @@ def main():
                 monster_nos = []
 
                 for upload_file in uploaded_files:
+                    st.code(upload_file)
                     logger.info(upload_file)
                     img = Image.open(upload_file)
 
